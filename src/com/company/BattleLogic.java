@@ -56,9 +56,6 @@ public class BattleLogic {
                         int randomAttack = rand.nextInt(maxAttack - minAttack + 1) + minAttack;
                         enemy.currentHp -= randomAttack;
 
-                        //System.out.println("Player: " + player.getCurrentHp() + "/" + player.getMaxHp());
-                        //System.out.println("Enemy: " + enemy.currentHp + "/" + enemy.maxHp);
-
                         System.out.println("You dealt " + randomAttack + " damage to the lv " + enemy.level +" " + enemy.name);
                         break;
                     case 2:
@@ -66,8 +63,6 @@ public class BattleLogic {
                         break;
                 }
 
-                System.out.println("Player: " + player.getCurrentHp() + "/" + player.getMaxHp());
-                System.out.println("Enemy: " + enemy.currentHp + "/" + enemy.maxHp);
             }else{
                 System.out.println(enemy.name + " turn");
                 if(playerChoice == 2){
@@ -79,9 +74,9 @@ public class BattleLogic {
                     System.out.println("The lv " + enemy.level + " "+ enemy.name + " dealt you " + attack + " damage.");
 
                 }
-                System.out.println("Player: " + player.getCurrentHp() + "/" + player.getMaxHp());
-                System.out.println("Enemy: " + enemy.currentHp + "/" + enemy.maxHp);
             }
+            System.out.println("Player: " + player.getCurrentHp() + "/" + player.getMaxHp());
+            System.out.println("Enemy: " + enemy.currentHp + "/" + enemy.maxHp);
 
             System.out.println();
             turn++;

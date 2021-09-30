@@ -6,12 +6,15 @@ import java.util.Scanner;
 public class Basement {
     Player player;
     Enemy[] enemies;
+    Game game;
 
-    public Basement(Player player){
+    public Basement(Player player, Game game){
         this.player = player;
         this.enemies = new Enemy[2];
         enemies[0] = (new Enemy("Guard", 10, 4, 1, 10, 20));
+        this.game = game;
         intro();
+
     }
 
     public void intro(){
@@ -35,7 +38,7 @@ public class Basement {
     }
 
     public void firstHallway(){
-        System.out.println("Oh no! You have been spotted by an enemy. Time to choose?");
+        System.out.println("<<Oh no! You have been spotted by an enemy. Time to choose?>>");
         System.out.println("(1) Fight? or (2) Bribe?");
         Scanner scan  = new Scanner(System.in);
         int choice = scan.nextInt();
@@ -59,6 +62,7 @@ public class Basement {
         }
 
         if(player.alive){
+            enemies[0].setAlive(false);
             System.out.println("Congratulations!!!! You survived your first battle!");
             System.out.println("Lets check your rewards!");
             player.getEquippedWeapon().reduceNumUses();
@@ -71,15 +75,46 @@ public class Basement {
             System.out.println("Looks like I have to try picking better players in the future.");
             System.out.println("Anyway, thanks for playing.");
             System.out.println("Bye Bye.");
+            game.gameOver();
         }
 
+        if(player.getCurrentHp() < player.getMaxHp()){
+            System.out.println("<<It looks like you took some damage.>>");
+            System.out.println("<<Lets try and fixed that.>>");
+            HealingPotion hp1 = new HealingPotion("Common Healing Potion", 5);
+            HealingPotion hp2 = new HealingPotion("Common Healing Potion", 5);
+            System.out.println("<<Here are 2 healing potions for you troubles>>");
+            System.out.println("Would you like to use them? (1) yes / (2) no");
+            choice = scan.nextInt();
+            switch (choice){
+                case 1:
+                    player.restoreHp(hp1.getMaxRestore());
+                    player.restoreHp(hp2.getMaxRestore());
+                    player.stats();
+                    System.out.println("<<Great. Now that you look much better>>");
+                    System.out.println( player.getName() + ": Thanks??");
+                    break;
+                case 2:
+                    System.out.println("<<That's fine with me.>>");
+                    System.out.println("<<They might be more helpful later anyway.>>");
+                    player.inventory.add(hp1);
+                    player.inventory.add(hp2);
+                    break;
+            }
+        }
+        System.out.println("<<Now lets get you out of here. Please don't throw up.>>");
+        System.out.println("<<3...2...1...>>");
+        System.out.println();
+        System.out.println( "     **********NOTICE**********\n" +
+                            " You have now cleared the tutorial area. \n" +
+                            "   We look forward to your adventures.");
+
+        City city = new City();
     }
 
     public void fight(int numEnemies){
-
         Enemy enemy = enemies[0];
         BattleLogic battleLogic = new BattleLogic();
         battleLogic.battle(player, enemy);
-
     }
 }

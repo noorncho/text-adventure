@@ -23,7 +23,7 @@ public class Game {
             System.out.println("Let's Begin");
             player = new Player(playerName);
             player.stats();
-            basement = new Basement(player);
+            basement = new Basement(player, this);
 
         }else if(choice.equalsIgnoreCase("N")){
             gameOver();
@@ -37,5 +37,6 @@ public class Game {
     public void gameOver(){
         System.out.println("Thank you for playing!");
         System.out.println("Goodbye!");
+        System.exit(0);
     }
 }

@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Basement {
@@ -19,14 +18,15 @@ public class Basement {
 
     public void intro(){
         System.out.println();
-        System.out.println("Hello. You have woke up in a dark basement, with a single door.");
+        System.out.println("You have woke up in a dark basement, with a single door.");
         System.out.println("What would like to do first? ");
         System.out.println("(L)ook around? or (O)pen Door? or anything else to quit?");
         Scanner scan = new Scanner(System.in);
         if(scan.next().equalsIgnoreCase("L")){
-            System.out.println("A dagger has been added to your inventory.");
+            System.out.println("You found and old dagger and it has been added to your inventory.");
+            System.out.println("You found 5 Gold.");
             player.inventory.add(new Weapon("Old Dagger", 3, 5,5));
-            player.addMoney(5);
+            player.addGold(5);
             System.out.println("Time to leave the room. Press (O) to continue");
             if(scan.next().equalsIgnoreCase("O")){
                 firstHallway();
@@ -46,13 +46,14 @@ public class Basement {
             case 1:
                 System.out.println("Let the battle begin!");
                 fight(1);
-                System.out.println("Your first battle is Over");
+                System.out.println("<<Your first battle is Over>>");
                 break;
             case 2:
                 if(player.getGold() < 10){
-                    System.out.println("You don't have enough money to bribe your way out.");
+                    System.out.println("<<You don't have enough money to bribe your way out.>>");
                     System.out.println("Prepare to fight.");
                     fight(1);
+                    System.out.println("<<Your first battle is Over>>");
                 }else{
                     System.out.println("You were able to avoid a battle.");
                     System.out.println("Lets proceed");
@@ -63,18 +64,18 @@ public class Basement {
 
         if(player.alive){
             enemies[0].setAlive(false);
-            System.out.println("Congratulations!!!! You survived your first battle!");
-            System.out.println("Lets check your rewards!");
+            System.out.println("<<Congratulations!!!! You survived your first battle!>>");
+            System.out.println("<<Lets check your rewards!>>");
             player.getEquippedWeapon().reduceNumUses();
             player.checkRewards(enemies[0]);
-            System.out.println("Not bad. Let's check your current stats.");
+            System.out.println("<<Not bad. Let's check your current stats.>>");
             player.stats();
         }else{
             System.out.println("NOTICE: YOU HAVE DIED");
-            System.out.println("Oh no! It seems you were not able to defeat your first enemy.");
-            System.out.println("Looks like I have to try picking better players in the future.");
-            System.out.println("Anyway, thanks for playing.");
-            System.out.println("Bye Bye.");
+            System.out.println("<<Oh no! It seems you were not able to defeat your first enemy.>>");
+            System.out.println("<<Looks like I have to try picking better players in the future.>>");
+            System.out.println("<<Anyway, thanks for playing.>>");
+            System.out.println("<<Bye Bye.>>");
             game.gameOver();
         }
 
@@ -83,7 +84,7 @@ public class Basement {
             System.out.println("<<Lets try and fixed that.>>");
             HealingPotion hp1 = new HealingPotion("Common Healing Potion", 5);
             HealingPotion hp2 = new HealingPotion("Common Healing Potion", 5);
-            System.out.println("<<Here are 2 healing potions for you troubles>>");
+            System.out.println("<<Here are 2 healing potions for you troubles>>\n");
             System.out.println("Would you like to use them? (1) yes / (2) no");
             choice = scan.nextInt();
             switch (choice){
@@ -92,7 +93,6 @@ public class Basement {
                     player.restoreHp(hp2.getMaxRestore());
                     player.stats();
                     System.out.println("<<Great. Now that you look much better>>");
-                    System.out.println( player.getName() + ": Thanks??");
                     break;
                 case 2:
                     System.out.println("<<That's fine with me.>>");

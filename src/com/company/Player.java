@@ -45,8 +45,12 @@ public class Player {
         return name;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public int getLevel() {
+        return level;
+    }
+
+    public void gainExp(int exp){
+        this.currentExp += exp;
     }
 
     public void leveUp(int gainedExp){
@@ -95,8 +99,11 @@ public class Player {
     public int getGold() {
         return gold;
     }
+    public void spendGold(int amount){
+        this.gold -= amount;
+    }
 
-    public void addMoney(int money) {
+    public void addGold(int money) {
         this.gold += money;
     }
 

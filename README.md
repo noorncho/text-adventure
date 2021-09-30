@@ -1,3 +1,5 @@
+![Little Adventure Thumbnail](text-adventure.png)
+
 # Text Adventure
 
 ## General Info

@@ -26,14 +26,23 @@ public class Player {
     }
 
     public void stats(){
+        System.out.println();
+        System.out.println("Player Info");
+        System.out.println("-----------");
         System.out.println("Name: " + name);
         System.out.println("Level: " + level);
         System.out.println("HP: " + currentHp + "/" + maxHp);
-        System.out.println("Gold: " + gold + "G");
+        System.out.println("Gold: " + gold + " G");
+        if(equippedWeapon != null){
+            System.out.println("Equipped Weapons: " + equippedWeapon.getName() + "(Uses: "+ equippedWeapon.getNumUses()+" / " + equippedWeapon.getMaxNumUses()+ ")");
+        }else{
+            System.out.println("Equipped Weapons: None");
+        }
+        System.out.println();
     }
 
-    public int getLevel() {
-        return level;
+    public String getName() {
+        return name;
     }
 
     public void setLevel(int level) {
@@ -42,12 +51,13 @@ public class Player {
 
     public void leveUp(int gainedExp){
         int totalExp = currentExp + gainedExp;
-        if(totalExp >= requiredExp){
-            currentExp = totalExp % requiredExp;
-            System.out.println("You have leveled up!");
-            level++;
-            requiredExp = (int) (level * Math.pow(20, level));
-        }
+            if (totalExp >= requiredExp) {
+                currentExp = totalExp % requiredExp;
+                System.out.println("You have leveled up!");
+                level++;
+                requiredExp = (int) (level * Math.pow(20, level));
+                maxHp = maxHp * level;
+            }
     }
 
     public int getMaxHp() {
@@ -60,6 +70,10 @@ public class Player {
 
     public int getCurrentHp() {
         return currentHp;
+    }
+
+    public void restoreHp(int extraHp){
+        this.currentHp += extraHp;
     }
 
     public void setCurrentHp(int currentHp) {
@@ -103,8 +117,11 @@ public class Player {
             for(Item i: inventory){
                 int index = inventory.indexOf(i);
                 Item item = inventory.get(index);
-                if(inventory.get(index) instanceof Weapon){
+                if(item instanceof Weapon){
                     System.out.println(index + ": " + item.getName() + " [Type: Weapon]");
+                }
+                else if(item instanceof HealingPotion){
+                    System.out.println(index + ": " + item.getName() + " [Type: Healing Potion (+" + ((HealingPotion) item).getMaxRestore()+ " HP)]");
                 }else{
                     System.out.println(index + ": " + inventory.get(index).getName());
                 }
@@ -114,6 +131,7 @@ public class Player {
     }
 
     public void checkRewards(Enemy enemy){
+        System.out.println("You gained " + enemy.gold + " G");
         gold += enemy.gold;
         leveUp(enemy.rewardExp);
     }

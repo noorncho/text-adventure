@@ -1,13 +1,12 @@
 package com.company;
 
 public class Weapon extends Item{
-    private int minDamage, maxDamage, integrity;
+    private int minDamage, maxDamage;
 
-    public Weapon(String name, int minDamage, int maxDamage, int integrity) {
-        super(name);
+    public Weapon(String name, int minDamage, int maxDamage, int numUses) {
+        super(name, numUses, true);
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
-        this.integrity = integrity;
     }
 
     public int getMinDamage() {
@@ -16,10 +15,6 @@ public class Weapon extends Item{
 
     public int getMaxDamage() {
         return maxDamage;
-    }
-
-    public int getIntegrity() {
-        return integrity;
     }
 
 }

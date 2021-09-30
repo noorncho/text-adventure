@@ -7,6 +7,7 @@ public class Game {
     Basement basement;
 
     public Game(){
+        gameTitle();
         gameIntro();
     }
 
@@ -38,5 +39,15 @@ public class Game {
         System.out.println("Thank you for playing!");
         System.out.println("Goodbye!");
         System.exit(0);
+    }
+
+    public void gameTitle(){
+        System.out.println("   __ _ _   _   _          _       _                 _                  \n"
+                + "  / /(_) |_| |_| | ___    /_\\   __| |_   _____ _ __ | |_ _   _ _ __ ___ \n" + " / / | | __| __| " +
+                "|/ _ \\  //_\\\\ / _` \\ \\ / / _ \\ '_ \\| __| | | | '__/ _ \\ \n" + "/ /__| | |_| |_| |  __/ /  _ " +
+                " \\ (_| |\\ V /  __/ | | | |_| |_| | | |  __/ \n" + "\\____/_|\\__|\\__|_|\\___| \\_/ \\_/\\__,_| " +
+                "\\_/ \\___|_| |_|\\__|\\__,_|_|  \\___|\n"+ "\n");
+
+
     }
 }

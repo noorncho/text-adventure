@@ -109,7 +109,8 @@ public class Basement {
                             " You have now cleared the tutorial area. \n" +
                             "   We look forward to your adventures.");
 
-        City city = new City();
+        //Leave the first scene and move to the city to continue on
+        City city = new City(player);
     }
 
     public void fight(int numEnemies){

@@ -28,6 +28,9 @@ public class Item {
 
     public void reduceNumUses(){
         this.numUses--;
+        if(numUses == 0){
+            usable = false;
+        }
     }
 
     public boolean isUsable(){

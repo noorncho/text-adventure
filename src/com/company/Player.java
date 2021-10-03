@@ -51,17 +51,17 @@ public class Player {
 
     public void gainExp(int exp){
         this.currentExp += exp;
+        leveUp();
     }
 
-    public void leveUp(int gainedExp){
-        int totalExp = currentExp + gainedExp;
-            if (totalExp >= requiredExp) {
-                currentExp = totalExp % requiredExp;
-                System.out.println("You have leveled up!");
-                level++;
-                requiredExp = (int) (level * Math.pow(20, level));
-                maxHp = maxHp * level;
-            }
+    public void leveUp(){
+        if (currentExp >= requiredExp) {
+            currentExp = currentExp % requiredExp;
+            System.out.println("You have leveled up!");
+            level++;
+            requiredExp = (int) (level * Math.pow(20, level));
+            maxHp = maxHp * level;
+        }
     }
 
     public int getMaxHp() {
@@ -99,6 +99,7 @@ public class Player {
     public int getGold() {
         return gold;
     }
+
     public void spendGold(int amount){
         this.gold -= amount;
     }
@@ -140,6 +141,6 @@ public class Player {
     public void checkRewards(Enemy enemy){
         System.out.println("You gained " + enemy.gold + " G");
         gold += enemy.gold;
-        leveUp(enemy.rewardExp);
+        gainExp(enemy.rewardExp);
     }
 }

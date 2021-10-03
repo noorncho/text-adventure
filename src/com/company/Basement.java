@@ -110,7 +110,8 @@ public class Basement {
                             "   We look forward to your adventures.");
 
         //Leave the first scene and move to the city to continue on
-        City city = new City(player);
+        //City city = new City(player);
+        GroundFloor groundFloor = new GroundFloor(player);
     }
 
     public void fight(int numEnemies){

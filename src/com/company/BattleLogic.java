@@ -32,7 +32,10 @@ public class BattleLogic {
             }else{
                 System.out.println("Fight Begin");
             }
+        }else{
+            System.out.println("Prepare to Battle.");
         }
+
         //Enemy enemy = enemies[0];
         Scanner scan = new Scanner(System.in);
         int turn = 1;

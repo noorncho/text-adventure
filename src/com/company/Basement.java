@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.house.GroundFloor;
+
 import java.util.Scanner;
 
 public class Basement {

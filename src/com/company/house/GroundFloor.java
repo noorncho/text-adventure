@@ -1,4 +1,8 @@
-package com.company;
+package com.company.house;
+
+import com.company.City;
+import com.company.Enemy;
+import com.company.Player;
 
 import java.util.Scanner;
 
@@ -37,7 +41,8 @@ public class GroundFloor {
                 break;
             case 2:
                 System.out.println("\nYou have decided to try the left door");
-                lockedDoor();
+                //lockedDoor();
+                leftRoom();
                 break;
             case 3:
                 System.out.println("\nYou have decided to take the stairs");
@@ -62,6 +67,14 @@ public class GroundFloor {
     }
 
     public void rightDoor(){
+        System.out.println("The door unlocks and you walk in and find yourself walking into a library.");
+    }
 
+    public void leftRoom(){
+        System.out.println("The door unlocks and you walk into a long empty hallway.");
+        System.out.println("As you take a step forward the door slams shut behind you and the floor open under you.");
+        System.out.println("You black out as you continue to fall.");
+        System.out.println("\n \n");
+        City city = new City(player);
     }
 }

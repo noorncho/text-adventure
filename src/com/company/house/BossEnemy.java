@@ -1,4 +1,8 @@
-package com.company;
+package com.company.house;
+
+import com.company.BattleLogic;
+import com.company.Enemy;
+import com.company.Player;
 
 public class BossEnemy {
 
@@ -19,14 +23,14 @@ public class BossEnemy {
         BattleLogic battleLogic = new BattleLogic();
         battleLogic.battle(player, gameBoss);
         if(!player.alive){
-            System.out.println("<<I did warn you before, that you might not be ready to face them.>>");
+            System.out.println("\n<<I did warn you before, that you might not be ready to face them.>>");
             System.out.println("<<But you didn't listen to me. They never listen to me.>>");
             System.out.println("<<Now look at you. But you did make better progress than the other.>>");
             System.out.println("<<Good effort though. Bye Bye.>>");
             System.out.println("\n\n********** NOTICE: **********");
             System.out.println("        YOU HAVE DIED!");
-            System.out.println("WE HAD HIGH HOPES FOR YOU.");
-            System.out.println("BUT APPRECIATE YOUR EFFORT");
+            System.out.println("  WE HAD HIGH HOPES FOR YOU.");
+            System.out.println("  BUT APPRECIATE YOUR EFFORT");
             System.out.println("         GAME OVER!!");
         }
     }
